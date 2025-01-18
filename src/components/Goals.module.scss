@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #e6dede;
+  .header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  .goalsTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #9faf90;
+  }
+  .goalsInputContainer {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 20px;
+    color: #9faf90;
+    gap: 10px;
+    .goalsInput {
+      display: flex;
+      width: 600px;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      input {
+        width: 450px;
+        padding: 10px;
+        border: 1px solid #9faf90;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #333;
+      }
+    }
+  }
+}
