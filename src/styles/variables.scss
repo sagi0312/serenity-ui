@@ -16,7 +16,8 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
 // Colors - Morning Theme
-$primary-color: #4a968f;
+$primary-color: #4a968f; // serene teal
+$secondary-color: #f8b195; // warm accent for CTAs
 $bot-border: #e0f2f1;
 $home-headline: #1a3c34;
 $home-subtext: #335c52;
@@ -27,8 +28,14 @@ $sidebar-bg: #e6f4f1;
 $sidebar-border: #cce7e4;
 $koan-color: #446a67;
 $input-border: #ccc;
-$text-dark: #333;
+$text-dark: #2d3748; // soft black, 90% opacity
 
 // Chat bubble colors
 $user-bubble: #4a968f;
 $bot-bubble-border: #e0f2f1;
+
+// Wellness Tools
+// - 5-Minute Meditation: audio player embed
+// - Gratitude Journal: expandable textarea
+// - Mindfulness Reminders: toggle switches
+// - Horizontal scroll on mobile for quick access cards

@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./ChatInterface.module.scss";
 import clsx from "clsx";
 import koans from "../data/koans.json";
+import { WellnessTools } from "./WellnessTools";
 
 const randomKoan = koans[Math.floor(Math.random() * koans.length)].quote;
 
@@ -56,6 +57,7 @@ export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
           />
           <button onClick={handleSend}>☸️</button>
         </div>
+        <WellnessTools />
       </main>
     </div>
   );
