@@ -30,17 +30,11 @@ Click the *"4-7-8 Breathing"* button for guided relaxation.
 Return to center:
 Use the "Back to Home" link to reset your session.
 
-🌐 Connect with the Backend
-Set your API endpoint in .env:
-
-env
-VITE_API_URL=http://localhost:3000/api
 
 🙏 Philosophy
-This project follows three core principles:
+This project follows core principles:
 
 Non-judgment: No saved conversations unless explicitly requested
 
 Simplicity: Minimal UI to reduce cognitive load
 
-Accessibility: Designed for all levels of tech literacy
