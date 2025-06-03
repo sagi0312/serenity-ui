@@ -10,19 +10,53 @@ type Message = {
   sender: "user" | "bot";
   text: string;
 };
+
 interface ChatInterfaceProps {
   onBackHome: () => void;
 }
+
 export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>([
     { sender: "bot", text: "Welcome. Breathe in peace, breathe out tension." },
   ]);
   const [input, setInput] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
-    setMessages([...messages, { sender: "user", text: input }]);
+
+    const userMessage = { sender: "user", text: input } as Message;
+    setMessages((prev) => [...prev, userMessage]);
     setInput("");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/seek", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ message: input }),
+      });
+
+      const data = await response.json();
+
+      if (data.reply) {
+        setMessages((prev) => [...prev, { sender: "bot", text: data.reply }]);
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "bot", text: "Sorry, I couldn’t understand that." },
+        ]);
+      }
+    } catch (error) {
+      console.error("Error calling backend:", error);
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "Something went wrong. Please try again." },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -46,6 +80,9 @@ export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
               {msg.text}
             </div>
           ))}
+          {isLoading && (
+            <div className={clsx(styles.message, styles.bot)}>Typing...</div>
+          )}
         </div>
         <div className={styles.inputBar}>
           <input
@@ -54,8 +91,11 @@ export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
+            disabled={isLoading}
           />
-          <button onClick={handleSend}>☸️</button>
+          <button onClick={handleSend} disabled={isLoading}>
+            ☸️
+          </button>
         </div>
         <WellnessTools />
       </main>
