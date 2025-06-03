@@ -19,7 +19,7 @@ Start the development server:
 npm run dev
 Open http://localhost:5173 and begin your practice.
 
-🧘‍♂️ How to Use
+## 🧘‍♂️ How to Use
 Begin a conversation:
 Type your thoughts in the input field with the prompt:
 "What weighs on your heart today?"
@@ -31,7 +31,7 @@ Return to center:
 Use the "Back to Home" link to reset your session.
 
 
-🙏 Philosophy
+## 🙏 Philosophy
 This project follows core principles:
 
 Non-judgment: No saved conversations unless explicitly requested
