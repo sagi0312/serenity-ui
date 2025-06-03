@@ -1,51 +1,46 @@
-# React + TypeScript + Vite
+# Serenity UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*A mindful AI companion blending ancient wisdom and modern mental health principles*
 
-Currently, two official plugins are available:
+*"Every day is a journey, and the journey itself is home."*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
+- **Wisdom Chat**: Compassionate AI responses rooted in Buddhism, Taoism, and psychology
+- **4-7-8 Breathing**: Built-in guided breathing exercise for stress relief
+- **Minimalist Design**: Calm color palette and unobtrusive interface
+- **Daily Reflections**: Thought-provoking quotes to start your journey
 
-## Expanding the ESLint configuration
+## 🚀 Quick Start
+1. Install dependencies:
+   ```bash
+   npm install
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Start the development server:
+npm run dev
+Open http://localhost:5173 and begin your practice.
 
-- Configure the top-level `parserOptions` property like this:
+🧘‍♂️ How to Use
+Begin a conversation:
+Type your thoughts in the input field with the prompt:
+"What weighs on your heart today?"
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Practice mindful breathing:
+Click the *"4-7-8 Breathing"* button for guided relaxation.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Return to center:
+Use the "Back to Home" link to reset your session.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+🌐 Connect with the Backend
+Set your API endpoint in .env:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# fresh-start
+env
+VITE_API_URL=http://localhost:3000/api
+
+🙏 Philosophy
+This project follows three core principles:
+
+Non-judgment: No saved conversations unless explicitly requested
+
+Simplicity: Minimal UI to reduce cognitive load
+
+Accessibility: Designed for all levels of tech literacy
