@@ -2,12 +2,14 @@ import { useState } from "react";
 import styles from "./ChatInterface.module.scss";
 import clsx from "clsx";
 import koans from "../data/koans.json";
-import { WellnessTools } from "./WellnessTools";
 
 const randomKoan = koans[Math.floor(Math.random() * koans.length)].quote;
-
+enum sender {
+  USER = "user",
+  BOT = "bot",
+}
 type Message = {
-  sender: "user" | "bot";
+  sender: sender;
   text: string;
 };
 
@@ -17,7 +19,10 @@ interface ChatInterfaceProps {
 
 export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>([
-    { sender: "bot", text: "Welcome. Breathe in peace, breathe out tension." },
+    {
+      sender: sender.BOT,
+      text: "Welcome. Breathe in peace, breathe out tension.",
+    },
   ]);
   const [input, setInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +30,7 @@ export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    const userMessage = { sender: "user", text: input } as Message;
+    const userMessage: Message = { sender: sender.USER, text: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsLoading(true);
@@ -41,18 +46,21 @@ export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
       const data = await response.json();
 
       if (data.reply) {
-        setMessages((prev) => [...prev, { sender: "bot", text: data.reply }]);
+        setMessages((prev) => [
+          ...prev,
+          { sender: sender.BOT, text: data.reply },
+        ]);
       } else {
         setMessages((prev) => [
           ...prev,
-          { sender: "bot", text: "Sorry, I couldn’t understand that." },
+          { sender: sender.BOT, text: "Sorry, I couldn’t understand that." },
         ]);
       }
     } catch (error) {
       console.error("Error calling backend:", error);
       setMessages((prev) => [
         ...prev,
-        { sender: "bot", text: "Something went wrong. Please try again." },
+        { sender: sender.BOT, text: "Something went wrong. Please try again." },
       ]);
     } finally {
       setIsLoading(false);
@@ -97,7 +105,6 @@ export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
             ☸️
           </button>
         </div>
-        <WellnessTools />
       </main>
     </div>
   );
