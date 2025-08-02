@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./ChatInterface.module.scss";
 import clsx from "clsx";
 import koans from "../data/koans.json";
@@ -26,6 +26,7 @@ export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
   ]);
   const [input, setInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -66,7 +67,9 @@ export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
       setIsLoading(false);
     }
   };
-
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
   return (
     <div className={styles.chatInterface}>
       <aside className={styles.sidebar}>
@@ -91,6 +94,7 @@ export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
           {isLoading && (
             <div className={clsx(styles.message, styles.bot)}>Typing...</div>
           )}
+          <div ref={messagesEndRef} />
         </div>
         <div className={styles.inputBar}>
           <input
@@ -102,7 +106,7 @@ export default function ChatInterface({ onBackHome }: ChatInterfaceProps) {
             disabled={isLoading}
           />
           <button onClick={handleSend} disabled={isLoading}>
-            ☸️
+            Send
           </button>
         </div>
       </main>

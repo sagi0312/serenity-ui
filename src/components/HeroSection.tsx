@@ -8,13 +8,13 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
   return (
     <div className={styles.hero}>
       <div className={styles.content}>
-        <h1 className={styles.headline}>Find peace in the present moment</h1>
+        <h1 className={styles.headline}>Embrace the power of now</h1>
         <p className={styles.subtext}>
-          A compassionate AI companion blending Buddhist, Taoist, and modern
-          psychology wisdom
+          A compassionate AI companion sharing wisdom from "The Power of Now" by
+          Eckhart Tolle
         </p>
         <button className={styles.cta} onClick={onStart}>
-          Begin Your Journey
+          Enter the Now
         </button>
       </div>
     </div>
